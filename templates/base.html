@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkNest</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+             <img src="{% static 'talknest/images/logo.png' %}" alt="TalkNest Logo">
+        </div>
+
+
+        <div class="search-box">
+            <input type="text" placeholder="Tìm kiếm trong TalkNest">
+        </div>
+
+        <div class="auth-buttons">
+            <button class="btn login">Đăng nhập</button>
+            <button class="btn register">Đăng ký</button>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
