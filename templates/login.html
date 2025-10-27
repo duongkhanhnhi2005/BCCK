@@ -1,10 +1,236 @@
+{% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Talknest-Đăng nhập</title>
+
+  <style>
+    * { box-sizing: border-box; font-family: Inter, system-ui, Arial, sans-serif; }
+    body { margin:0; background:#fffaf2; min-height:100vh; display:flex; align-items:stretch; }
+
+    .container {
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      height:100vh;
+    }
+
+    .left {
+      flex:1;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      background: #fffaf2;
+    }
+
+    .left .bg-img {
+      width:80%;
+      max-width:520px;
+      height:auto;
+      display:block;
+    }
+
+    .left .logo-overlay {
+      position:absolute;
+      top:40px;
+      left:120px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .left .logo-overlay img {
+      width:48px;
+      height:48px;
+      object-fit:contain;
+    }
+    .left .logo-overlay .brand {
+      font-weight:800;
+      color:#ff4d00;
+      font-size:20px;
+    }
+
+    .right {
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:60px 80px;
+      align-items:flex-start;
+      gap:14px;
+      background:#fffaf2;
+    }
+
+    .right h1 {
+      margin:0;
+      padding-top: -200px;
+      padding-bottom: 20px;
+      margin-left:120px;
+      font-size:48px;
+      line-height:1;
+      color:#000;
+    }
+    .right p.lead {
+
+      margin:0;
+      margin-left:101px;
+      color:#444;
+      font-size:14px;
+      margin-bottom:18px;
+    }
+
+.social-btns {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.social-btns button {
+  flex: 1;
+  padding: 12px 10px;
+  border-radius: 4px; /* Giảm bán kính bo góc */
+  border: 1px solid #ddd;
+  background: #ffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.5s; /* Thêm hiệu ứng chuyển tiếp cho nền */
+}
+
+
+.social-btns button:hover {
+  background: #ffffff; /* Thay đổi màu nền khi di chuột qua */
+}
+    }
+    .btn-google, .btn-fb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 100%;
+      padding: 20px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      background: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .divider {
+      width:100%;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#000;
+      margin:6px 0 14px;
+    }
+    .divider::before, .divider::after { content:""; height:1px; background:#ddd; flex:1; }
+
+    form { width:100%; }
+    .input-email, .input-password {
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #ddd;
+      font-size:15px;
+      margin-bottom:12px;
+    }
+
+    .auth-line {
+      padding-top: -200px
+      margin-left:160px;
+      font-size:14px;
+      color:#333;
+      margin-bottom:18px;
+    }
+    .auth-line a { color:#ff4d00; font-weight:700; text-decoration:none; margin-left:6px; }
+
+    .btn-submit {
+      width:100%;
+      padding:14px;
+      border-radius:30px;
+      border:2px solid #ff4d00;
+      background:#ff4d00;
+      color:#fff;
+      font-weight:800;
+      font-size:18px;
+      cursor:pointer;
+    }
+    .btn-submit.outline {
+      background:transparent;
+      color:#ff4d00;
+    }
+
+    @media (max-width:900px) {
+      .container { flex-direction:column; }
+      .left { display:none; }
+      .right { align-items:center; padding:32px; text-align:center; }
+      .right h1 { font-size:36px; }
+      .auth-line a { margin-left:4px; }
+    }
+  </style>
 </head>
 <body>
-$END$
+  <div class="container">
+
+<!-- LEFT: ảnh login + logo overlay -->
+<div class="left" style="display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100vh; padding: 40px 20px; box-sizing: border-box;">
+
+<!-- Logo Talknest -->
+<!-- Logo Talknest -->
+<div class="logo-overlay" style="width: 250px; height: auto; margin-bottom: 35px;">
+  <img src="{% static 'talknest/images/logo.png' %}" alt="Talknest logo" style="width: 100%; height: auto;">
+</div>
+
+<!-- Hình người -->
+<img class="bg-img" src="{% static 'talknest/images/login.png' %}" alt="Login illustration"
+     style="width: auto; max-width: 100%; max-height: 410px; object-fit: contain; margin-top: 120px;margin-bottom: -30px">
+
+  <!-- Tiêu đề -->
+  <h2 style="font-weight: 750; margin-bottom: 20px;">Continue With</h2>
+
+  <!-- Khung chứa các biểu tượng -->
+  <div class="social-btns" style="display: flex; flex-direction: row; justify-content: center; gap: 25px; border: 1px solid #000; border-radius: 15px; padding: 5px; width: 150px;">
+    <a href="{% provider_login_url 'facebook' %}" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="{% static 'talknest/images/fb.png' %}" width="50" alt="Facebook">
+    </a>
+    <a href="{% provider_login_url 'google' %}" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="{% static 'talknest/images/gg.png' %}" width="50" alt="Google">
+    </a>
+  </div>
+</div>
+
+
+    <!-- RIGHT: form -->
+<div class="right" style="text-align: center; margin: 0 auto; width: 250px;">
+  <h1 style="font-weight: 800;">Đăng nhập</h1>
+  <p class="lead">Vui lòng nhập thông tin tài khoản để tiếp tục</p>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    <input class="input-email" type="text" name="username" placeholder="Email/Tên đăng nhập*" required style="width: 100%; margin: 10px 0; padding: 10px;">
+    <input class="input-password" type="password" name="password" placeholder="Mật khẩu*" required style="width: 100%; margin: 10px 0; padding: 10px;">
+<div class="remember-container" style="display: flex; align-items: center; margin-bottom: 0px;">
+    <input type="checkbox" id="remember" name="remember" style="margin-right: 5px;">
+    <label for="remember">Ghi nhớ đăng nhập</label>
+</div>
+    <button class="btn-submit" type="submit" style="width: 100%; margin: 20px 0; padding: 10px;">Đăng nhập</button>
+
+    <div class="auth-line" style="margin:5px;">
+      <a href="" style="margin-left: 5px;">Quên mật khẩu</a>
+    </div>
+      <hr style="margin: 10px auto; width: 40%; border: 1px solid #000;">
+    <div class="auth-line" style="margin: 5px 0;">
+      <span>Tài khoản mới?</span>
+      <a href="{% url 'register' %}" style="margin-left: 5px;">Đăng ký</a>
+    </div>
+  </form>
+</div>
+
+  </div>
 </body>
 </html>
