@@ -16,14 +16,15 @@
     <div class="main-content">
         <h3>CHỦ ĐỀ</h3>
         <ul class="topics">
-            <li>Học tập & Tài nguyên</li>
-            <li>Đời sống</li>
-            <li>Cơ hội & Phát triển</li>
-            <li>Công nghệ & Kỹ năng</li>
-            <li>Mua bán - Rao vặt</li>
-            <li>Giải trí - Giao lưu</li>
+             {% for topic in topics %}
+                <li>
+                    <strong>{{ topic.title }}</strong><br>
+                </li>
+            {% empty %}
+                <li>Chưa có chủ đề nào.</li>
+            {% endfor %}
         </ul>
-        <p class="see-more">Xem thêm</p>
+
     </div>
 
     <!-- Trending -->
