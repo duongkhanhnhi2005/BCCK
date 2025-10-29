@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from .models import Topic, Post
+from django.shortcuts import render,redirect
+from .models import Topic, Post,UserProfile
 from django.db.models import Q
+from .forms import AvatarUploadForm
+
 
 def home(request):
     topics = Topic.objects.all()
@@ -50,4 +52,22 @@ def register(request):
     return render(request, "register.html")
 def login(request):
     return render(request, "login.html")
+def profile_view(request):
+    user = request.user
+    profile, created = UserProfile.objects.get_or_create(user=user)
 
+    if request.method == 'POST':
+        form = AvatarUploadForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()  # ✅ Lưu avatar mới
+            return redirect('profile')  # Reload lại trang để hiển thị ảnh
+    else:
+        form = AvatarUploadForm(instance=profile)
+
+    user_posts = user.posts.all() if hasattr(user, 'posts') else []
+
+    return render(request, 'profile.html', {
+        'user': user,
+        'form': form,
+        'user_posts': user_posts
+    })

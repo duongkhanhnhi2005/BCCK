@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'talknest'
 ]
-SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -140,7 +139,8 @@ SOCIALACCOUNT_PROVIDERS = {
         },
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
-    },
+    }
+,
     'facebook': {
         'METHOD': 'oauth2',
         'APP': {
@@ -151,8 +151,9 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+LOGIN_REDIRECT_URL = '/profile/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 SITE_ID = 1
