@@ -11,12 +11,14 @@ def home(request):
     communities = Community.objects.all()
     return render(request, "home.html",{'communities': communities})
 
-def search(request):
+def search_advanced(request):
     keyword = request.GET.get('keyword', '')
     user = request.GET.get('user', '')
+    communities = Community.objects.all()  # lấy tất cả cộng đồng từ DB
     community_id = request.GET.get('community', '')
     before = request.GET.get('before', '')
     after = request.GET.get('after', '')
+
 
     posts = None  # mặc định chưa tìm
 
@@ -41,7 +43,7 @@ def search(request):
 
     communities = Community.objects.all()
 
-    return render(request, 'search.html', {
+    return render(request, 'search_advanced.html', {
         'posts': posts,
         'communities': communities,
         'keyword': keyword,
@@ -51,6 +53,32 @@ def search(request):
         'community_id': community_id,
     })
 
+def search_results(request):
+    query = request.GET.get('q', '')
+    user = request.GET.get('user', '')
+    before = request.GET.get('before', '')
+    after = request.GET.get('after', '')
+    community = request.GET.get('community', '')
+
+    results = Post.objects.all()
+
+    if query:
+        results = results.filter(title__icontains=query)
+    if user:
+        results = results.filter(author__username__icontains=user)
+    if before:
+        results = results.filter(created_at__lte=before)
+    if after:
+        results = results.filter(created_at__gte=after)
+    if community:
+        results = results.filter(community__id=community)
+
+    context = {
+        'query': query,
+        'results': results,
+    }
+    return render(request, 'search_results.html', context)
+
 def register(request):
     return render(request, "register.html")
 def login(request):
@@ -58,6 +86,7 @@ def login(request):
 def profile_view(request):
     user = request.user
     profile, created = UserProfile.objects.get_or_create(user=user)
+    return render(request, 'profile.html')
 
 
 @login_required

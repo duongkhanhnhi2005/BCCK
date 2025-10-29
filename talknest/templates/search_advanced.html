@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="advanced-search-container">
+  <h2 class="title">Tìm kiếm nâng cao</h2>
+
+  <form method="get" action="{% url 'search_results' %}" class="advanced-search-form">
+    <div class="form-group">
+      <label for="keyword">Từ khóa:</label>
+      <input type="text" id="keyword" name="q" placeholder="Nhập từ khóa..." />
+    </div>
+
+    <div class="form-group">
+      <label for="user">Người đăng:</label>
+      <input type="text" id="user" name="user" placeholder="Tên người dùng..." />
+    </div>
+
+    <div class="form-group date-group">
+      <div>
+        <label for="before">Trước ngày:</label>
+        <input type="date" id="before" name="before" />
+      </div>
+      <div>
+        <label for="after">Sau ngày:</label>
+        <input type="date" id="after" name="after" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="community">Cộng đồng:</label>
+      <select id="community" name="community">
+      <option value="">Tất cả cộng đồng</option>
+      {% for c in communities %}
+        <option value="{{ c.id }}">{{ c.name }}</option>
+      {% endfor %}
+    </select>
+
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn-search">Tìm</button>
+      <a href="{% url 'home' %}" class="btn-cancel">Quay lại</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -34,9 +34,26 @@
     <img src="{% static 'talknest/images/logo.png' %}" alt="TalkNest Logo">
   </div>
 
-  <div class="search-box">
-    <input type="text" placeholder="Tìm kiếm trong TalkNest">
-  </div>
+<div class="search-box">
+  <form id="search-form" method="get" action="{% url 'search_results' %}">
+    <input
+      type="text"
+      name="q"
+      class="search-input"
+      placeholder="Tìm kiếm trong TalkNest"
+    />
+    <div class="search-buttons">
+      <button type="submit" class="btn-search">Tìm kiếm</button>
+      <button
+        type="button"
+        class="btn-advanced"
+        onclick="window.location.href='{% url 'search_advanced' %}'"
+      >
+        Tìm nâng cao...
+      </button>
+    </div>
+  </form>
+</div>
 
   <div class="auth-buttons">
     {% if user.is_authenticated %}
@@ -76,11 +93,14 @@
         <li><a href="#">Xu hướng</a></li>
       </ul>
 
-      <h4>Cộng đồng</h4>
-      <ul>
-        <li><a href="#">Cộng đồng</a></li>
-        <li><a href="#">Tạo cộng đồng</a></li>
-      </ul>
+      <div class="sidebar-section">
+  <h4>CỘNG ĐỒNG</h4>
+<ul>
+  <li><a href="{% url 'community_list' %}">Cộng đồng</a></li>
+  <li><a href="{% url 'create_community' %}">Tạo cộng đồng</a></li>
+</ul>
+
+
 
       <h4>Tài nguyên</h4>
       <ul>

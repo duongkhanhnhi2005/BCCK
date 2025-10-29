@@ -242,3 +242,163 @@ body {
 .auth-buttons .btn:hover .material-icons {
   color: #ff6600;           /* chuyển sang màu cam khi hover */
 }
+/* --- FORM TÌM KIẾM NÂNG CAO --- */
+.advanced-search-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fffdf5;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.advanced-search-container .title {
+  text-align: center;
+  color: #ff4500;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.advanced-search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 6px rgba(255,102,0,0.3);
+}
+
+.date-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-search {
+  background: #ff4500;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-search:hover {
+  background: #e63e00;
+}
+
+.btn-cancel {
+  background: #f0f0f0;
+  color: #333;
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #ddd;
+}
+
+/* Container chỉ để định vị dropdown */
+.search-box {
+  position: relative;
+  display: inline-block;
+}
+
+/* Ô nhập tìm kiếm */
+.search-input {
+  width: 350px;
+  padding: 8px 14px;
+  border: 1.5px solid #ff6600;
+  border-radius: 30px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 6px rgba(255, 102, 0, 0.3);
+}
+
+/* Ẩn dropdown mặc định */
+.search-buttons {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px); /* nằm ngay dưới ô input */
+  left: 0;
+  width: 100%; /* bằng đúng ô input */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.25s ease;
+}
+
+/* Khi focus vào input -> hiện dropdown */
+.search-box:focus-within .search-buttons {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nút tìm kiếm */
+.btn-search,
+.btn-advanced {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #ff4500;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-weight: 600;
+}
+
+.btn-search:hover,
+.btn-advanced:hover {
+  background: #e63e00;
+  transform: translateY(-1px);
+}
