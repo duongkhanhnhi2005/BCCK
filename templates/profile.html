@@ -1,40 +1,37 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'profile.css' %}">
 
 <div class="reddit-profile-header">
+
   <div class="reddit-user-info">
+    <!-- Avatar + Form upload -->
+    <form method="POST" enctype="multipart/form-data" class="profile-form">
+      {% csrf_token %}
+      <div class="reddit-avatar-wrapper">
 
-    <!-- Avatar -->
-    <div class="reddit-avatar-wrapper">
-      {% if user.user_profile.avatar_url %}
-        <img id="avatar-preview" src="{{ user.user_profile.avatar_url.url }}" alt="Avatar" class="reddit-avatar">
-      {% else %}
-        <img id="avatar-preview" src="{% static 'talknest/images/avatar.png' %}" alt="Avatar" class="reddit-avatar">
-      {% endif %}
+        {% if user.user_profile.avatar_url %}
+          <img id="avatar-preview"
+               src="{{ user.user_profile.avatar_url.url }}"
+               alt="Avatar"
+               class="reddit-avatar">
+        {% else %}
+          <img id="avatar-preview"
+               src="{% static 'talknest/images/avatar.png' %}"
+               alt="Avatar"
+               class="reddit-avatar">
+        {% endif %}
 
-      <!-- Form upload avatar -->
-<form method="POST" enctype="multipart/form-data" class="profile-form">
-  {% csrf_token %}
+      </div>
 
-  <div class="reddit-avatar-wrapper">
-    <img id="avatar-preview"
-         src="{{ user.user_profile.avatar_url.url }}"
-         alt="Avatar"
-         class="reddit-avatar">
-  </div>
+      <!-- Input chọn ảnh -->
+      <input type="file" name="avatar_url" id="id_avatar_url" accept="image/*">
+      <label for="id_avatar_url" class="upload-btn">Chọn ảnh mới</label>
+      <button type="submit" class="upload-btn">Cập nhật avatar</button>
+    </form>
 
-  <!-- input file -->
-  <input type="file" name="avatar_url" id="id_avatar_url" accept="image/*">
-  <label for="id_avatar_url" class="upload-btn">Chọn ảnh mới</label>
-
-  <button type="submit" class="upload-btn">Cập nhật avatar</button>
-</form>
-
-
-    </div>
-
-    <!-- Username -->
+    <!-- Thông tin người dùng -->
     <div class="reddit-username">
       <h2>{{ user.username }}</h2>
       <p>u/{{ user.username }}</p>
@@ -56,7 +53,7 @@
   </div>
 </div>
 
-<!-- ✅ Thêm preview JS -->
+<!-- ✅ Preview ảnh trước khi upload -->
 <script>
 document.getElementById("id_avatar_url").addEventListener("change", function(event) {
   const [file] = event.target.files;

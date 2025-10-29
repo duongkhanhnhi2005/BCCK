@@ -56,7 +56,6 @@ def profile_view(request):
     user = request.user
     profile, created = UserProfile.objects.get_or_create(user=user)
 
-<<<<<<< HEAD
     if request.method == 'POST':
         form = AvatarUploadForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
@@ -72,13 +71,9 @@ def profile_view(request):
         'form': form,
         'user_posts': user_posts
     })
-=======
-<<<<<<< HEAD
+
 def home(request):
     if request.user.is_authenticated:
         return render(request, 'home_user.html')
     else:
         return render(request, 'home_guest.html')
-=======
->>>>>>> 799ec24df183f2f18879d711b342b89122e2ec49
->>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2

@@ -122,17 +122,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-<<<<<<< HEAD
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [ BASE_DIR / "static",  # Thư mục chứa file main.css của bạn
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"  # Thư mục Django sẽ tạo khi chạy collectstatic
-=======
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
->>>>>>> 799ec24df183f2f18879d711b342b89122e2ec49
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
