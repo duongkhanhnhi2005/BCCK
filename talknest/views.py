@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from .models import Community, Post
+from .models import Community, Post, UserProfile
 from django.db.models import Q
 from .forms import CommunityForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-
+from .forms import AvatarUploadForm
 
 
 def home(request):
@@ -55,6 +55,10 @@ def register(request):
     return render(request, "register.html")
 def login(request):
     return render(request, "login.html")
+def profile_view(request):
+    user = request.user
+    profile, created = UserProfile.objects.get_or_create(user=user)
+
 
 @login_required
 def create_community(request):
@@ -96,3 +100,24 @@ def community_detail(request, community_id):
 def community_list(request):
     communities = Community.objects.all()
     return render(request, 'community_list.html', {'communities': communities})
+    if request.method == 'POST':
+        form = AvatarUploadForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()  # ✅ Lưu avatar mới
+            return redirect('profile')  # Reload lại trang để hiển thị ảnh
+    else:
+        form = AvatarUploadForm(instance=profile)
+
+    user_posts = user.posts.all() if hasattr(user, 'posts') else []
+
+    return render(request, 'profile.html', {
+        'user': user,
+        'form': form,
+        'user_posts': user_posts
+    })
+
+def home(request):
+    if request.user.is_authenticated:
+        return render(request, 'home_user.html')
+    else:
+        return render(request, 'home_guest.html')

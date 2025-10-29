@@ -1,6 +1,9 @@
 <component name="InspectionProjectProfileManager">
   <settings>
+<<<<<<< HEAD
     <option name="PROJECT_PROFILE" value="Default" />
+=======
+>>>>>>> 49677987e31db2d9c33fac779917355dd625ea1d
     <option name="USE_PROJECT_PROFILE" value="false" />
     <version value="1.0" />
   </settings>

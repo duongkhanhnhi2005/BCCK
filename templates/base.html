@@ -2,6 +2,7 @@
 <html lang="vi">
 {% load static %}
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TalkNest</title>
@@ -13,23 +14,94 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalkNest</title>
+  <link rel="stylesheet" href="{% static 'main.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'talknest/images/logo.png' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
 <body>
-    <header class="navbar">
-        <div class="logo">
-             <img src="{% static 'talknest/images/logo.png' %}" alt="TalkNest Logo">
-        </div>
 
+<header class="navbar">
+  <button id="toggle-sidebar" class="toggle-btn">
+    <span class="material-icons">menu</span>
+  </button>
 
-        <div class="search-box"> <input type="text" placeholder="Tìm kiếm trong TalkNest"> </div>
+  <div class="logo">
+    <img src="{% static 'talknest/images/logo.png' %}" alt="TalkNest Logo">
+  </div>
 
+  <div class="search-box">
+    <input type="text" placeholder="Tìm kiếm trong TalkNest">
+  </div>
 
-        <div class="auth-buttons">
-             <a href="{% url 'login' %}"><button class="btn login">Đăng nhập</button></a>
-             <a href="{% url 'register' %}"><button class="btn register">Đăng ký</button></a>
-        </div>
-    </header>
+  <div class="auth-buttons">
+    {% if user.is_authenticated %}
+      <button class="btn create"><span class="material-icons">add_box</span></button>
+      <button class="btn notification"><span class="material-icons">notifications_none</span></button>
+      <div class="user-avatar">
+  {% if user.is_authenticated %}
+      {% if user.user_profile.avatar_url %}
+          <img src="{{ user.user_profile.avatar_url.url }}" alt="User Avatar">
+      {% else %}
+          <img src="{% static 'talknest/images/avatar.png' %}" alt="Default Avatar">
+      {% endif %}
+  {% else %}
+      <img src="{% static 'talknest/images/avatar.png' %}" alt="Guest Avatar">
+  {% endif %}
+      </div>
+    {% else %}
+      <a href="{% url 'login' %}"><button class="btn login">Đăng nhập</button></a>
+      <a href="{% url 'register' %}"><button class="btn register">Đăng ký</button></a>
+    {% endif %}
+  </div>
+</header>
 
+<div class="main-layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="menu">
+      <h4>Trang chủ</h4>
+      <ul>
+        <li><a href="#">Phổ biến</a></li>
+        <li><a href="#">Khám phá</a></li>
+        <li><a href="#">Tất cả</a></li>
+      </ul>
+
+      <h4>Bảng tin</h4>
+      <ul>
+        <li><a href="#">Tạo bảng tin</a></li>
+        <li><a href="#">Xu hướng</a></li>
+      </ul>
+
+      <h4>Cộng đồng</h4>
+      <ul>
+        <li><a href="#">Cộng đồng</a></li>
+        <li><a href="#">Tạo cộng đồng</a></li>
+      </ul>
+
+      <h4>Tài nguyên</h4>
+      <ul>
+        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="#">Trợ giúp</a></li>
+        <li><a href="#">Chính sách</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
     {% block content %}
     {% endblock %}
+  </main>
+</div>
+
+<script>
+  const toggleButton = document.getElementById("toggle-sidebar");
+  const sidebar = document.getElementById("sidebar");
+  toggleButton.addEventListener("click", () => sidebar.classList.toggle("collapsed"));
+</script>
+
 </body>
 </html>

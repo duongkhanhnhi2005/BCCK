@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'profile.css' %}">
+
+<div class="reddit-profile-header">
+
+  <div class="reddit-user-info">
+    <!-- Avatar + Form upload -->
+    <form method="POST" enctype="multipart/form-data" class="profile-form">
+      {% csrf_token %}
+      <div class="reddit-avatar-wrapper">
+
+        {% if user.user_profile.avatar_url %}
+          <img id="avatar-preview"
+               src="{{ user.user_profile.avatar_url.url }}"
+               alt="Avatar"
+               class="reddit-avatar">
+        {% else %}
+          <img id="avatar-preview"
+               src="{% static 'talknest/images/avatar.png' %}"
+               alt="Avatar"
+               class="reddit-avatar">
+        {% endif %}
+
+      </div>
+
+      <!-- Input chọn ảnh -->
+      <input type="file" name="avatar_url" id="id_avatar_url" accept="image/*">
+      <label for="id_avatar_url" class="upload-btn">Chọn ảnh mới</label>
+      <button type="submit" class="upload-btn">Cập nhật avatar</button>
+    </form>
+
+    <!-- Thông tin người dùng -->
+    <div class="reddit-username">
+      <h2>{{ user.username }}</h2>
+      <p>u/{{ user.username }}</p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="reddit-tabs">
+    <ul>
+      <li class="active">Overview</li>
+      <li>Posts</li>
+      <li>Comments</li>
+      <li>Saved</li>
+      <li>History</li>
+      <li>Hidden</li>
+      <li>Upvoted</li>
+      <li>Downvoted</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ✅ Preview ảnh trước khi upload -->
+<script>
+document.getElementById("id_avatar_url").addEventListener("change", function(event) {
+  const [file] = event.target.files;
+  if (file) {
+    document.getElementById("avatar-preview").src = URL.createObjectURL(file);
+  }
+});
+</script>
+
+{% endblock %}
