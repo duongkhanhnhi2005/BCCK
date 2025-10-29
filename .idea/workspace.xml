@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="cb8be0fd-3787-4959-8034-1aeeb7eda490" name="Changes" comment="của t" />
+=======
+    <list default="true" id="8f37f195-6d45-4574-a5bf-90c71daf2007" name="Changes" comment="" />
+>>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,12 +17,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="HTML File" />
         <option value="Python Script" />
+=======
+        <option value="Python Script" />
+        <option value="HTML File" />
+>>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+<<<<<<< HEAD
     <excluded-from-favorite>
       <branch-storage>
         <map>
@@ -42,6 +52,14 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+=======
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="34WQbmb2D5IbJjPwNygKTEkU8oe" />
+>>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -49,12 +67,18 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+<<<<<<< HEAD
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.BCCK.executor&quot;: &quot;Run&quot;,
+=======
+    &quot;Python.Django Dev Server.executor&quot;: &quot;Run&quot;,
+    &quot;Python.urls.executor&quot;: &quot;Run&quot;,
+>>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+<<<<<<< HEAD
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/python/BCCK/talknest/static/talknest/images&quot;
   }
@@ -66,6 +90,14 @@
   </component>
   <component name="RunManager">
     <configuration name="BCCK" type="PythonConfigurationType" factoryName="Python">
+=======
+    &quot;last_opened_file_path&quot;: &quot;D:/python/LTW/BCCK-example&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Django Dev Server" type="PythonConfigurationType" factoryName="Python">
+>>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2
       <module name="BCCK" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,8 +106,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+<<<<<<< HEAD
       <option name="SDK_NAME" value="Python 3.13" />
       <option name="WORKING_DIRECTORY" value="C:\python\BCCK" />
+=======
+      <option name="SDK_NAME" value="Python 3.13 (LTW)" />
+      <option name="WORKING_DIRECTORY" value="D:\python\LTW\BCCK-example" />
+>>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -98,6 +135,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="cb8be0fd-3787-4959-8034-1aeeb7eda490" name="Changes" comment="" />
       <created>1761272800419</created>
       <option name="number" value="Default" />
@@ -137,4 +175,14 @@
     <MESSAGE value="của t" />
     <option name="LAST_COMMIT_MESSAGE" value="của t" />
   </component>
+=======
+      <changelist id="8f37f195-6d45-4574-a5bf-90c71daf2007" name="Changes" comment="" />
+      <created>1761326921367</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761326921367</updated>
+    </task>
+    <servers />
+  </component>
+>>>>>>> c5ceb21c234907d0bf80c8afcba2fd35dbbe6fb2
 </project>

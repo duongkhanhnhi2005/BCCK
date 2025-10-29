@@ -1,6 +1,96 @@
 <!DOCTYPE html>
 <html lang="vi">
 {% load static %}
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'talknest/images/logo.png' %}">
+</head>
+<body>
+
+
+<header class="navbar">
+    <div class="logo">
+        <img src="{% static 'talknest/images/logo.png' %}" alt="TalkNest Logo">
+
+    </div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Tìm kiếm trong TalkNest">
+    </div>
+
+    <div class="auth-buttons">
+        {% if user.is_authenticated %}
+            <!-- Sau khi đăng nhập -->
+            <button class="btn create">
+                <span class="material-icons">add_box</span> Create
+            </button>
+        <button class="btn notification">
+            <span class="material-icons">notifications_none</span>
+        </button>
+            <div class="user-avatar">
+                <img src="{% static 'talknest/images/avatar.png' %}" alt="User Avatar">
+            </div>
+        {% else %}
+            <!-- Trước khi đăng nhập -->
+            <button class="btn login">Đăng nhập</button>
+            <button class="btn register">Đăng ký</button>
+        {% endif %}
+    </div>
+</header>
+
+
+<div class="main-layout">
+    <!-- Sidebar trái -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <ul>
+                <li>Trang chủ</li>
+                <li>Phổ biến</li>
+                <li>Khám phá</li>
+                <li>Tất cả</li>
+            </ul>
+
+            <hr>
+
+            <h4>BẢNG TIN</h4>
+            <ul>
+                <li>Tạo bảng tin tùy chỉnh</li>
+                <li>Xu hướng</li>
+            </ul>
+
+            <hr>
+
+            <h4>CỘNG ĐỒNG</h4>
+            <ul>
+                <li>Cộng đồng</li>
+                <li>Tạo cộng đồng</li>
+            </ul>
+
+            <hr>
+
+            <h4>TÀI NGUYÊN</h4>
+            <ul>
+                <li>Giới thiệu về Talknest</li>
+                <li>Quảng cáo</li>
+                <li>Trợ giúp</li>
+                <li>Chính sách quyền riêng tư</li>
+                <li>Thỏa thuận người dùng</li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Nội dung chính -->
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+</div>
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,5 +118,6 @@
 
     {% block content %}
     {% endblock %}
+
 </body>
 </html>
