@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4 fw-bold text-center">Cộng đồng hàng đầu</h2>
+  <p class="text-center text-muted mb-5">Khám phá các cộng đồng lớn nhất và sôi động nhất trên TalkNest</p>
+
+  <div class="row g-4">
+    {% for c in communities %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <div class="avatar bg-light rounded-circle me-3" style="width:48px; height:48px;">
+                <span class="d-flex align-items-center justify-content-center h-100 text-primary fw-bold">
+                  {{ c.name|slice:":1" }}
+                </span>
+              </div>
+              <div>
+                <h5 class="card-title mb-0">
+                  <a href="{% url 'community_detail' c.community_id %}" class="text-decoration-none text-dark fw-semibold">
+                    {{ c.name }}
+                  </a>
+                </h5>
+                <small class="text-muted">Bởi {{ c.created_by.username }}</small>
+              </div>
+            </div>
+            <p class="card-text text-muted" style="min-height:60px;">
+              {{ c.description|truncatechars:100 }}
+            </p>
+            <p class="text-muted small mb-0">
+              👥 {{ c.members.count }} thành viên
+            </p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">Chưa có cộng đồng nào. Hãy tạo cộng đồng đầu tiên!</p>
+    {% endfor %}
+  </div>
+
+  <div class="text-center mt-5">
+    <a href="{% url 'create_community' %}" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
+      + Tạo cộng đồng mới
+    </a>
+  </div>
+</div>
+
+<style>
+.hover-card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+.avatar {
+  background: linear-gradient(135deg, #FFD700, #FF9800);
+  color: white;
+  font-size: 20px;
+}
+</style>
+{% endblock %}

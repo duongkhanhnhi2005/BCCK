@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <!-- Banner -->
+    <div class="community-banner position-relative mb-4 rounded-3">
+        {% if community.banner %}
+            <img src="{{ community.banner.url }}" class="w-100" style="height: 200px; object-fit: cover;">
+        {% else %}
+            <div class="bg-light w-100" style="height: 200px;"></div>
+        {% endif %}
+
+        <!-- Logo + Info -->
+        <div class="position-absolute d-flex align-items-center" style="bottom: -30px; left: 20px;">
+            {% if community.logo %}
+                <img src="{{ community.logo.url }}" class="rounded-circle border border-white" width="60" height="60">
+            {% else %}
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center border border-white" style="width:60px; height:60px;">
+                    {{ community.name|slice:":1" }}
+                </div>
+            {% endif %}
+            <div class="ms-3">
+                <h4 class="mb-0 fw-bold">{{ community.name }}</h4>
+                <p class="text-muted mb-0">Cộng đồng • {{ community.total_members }} thành viên</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="row mt-5">
+        <!-- Left: Posts -->
+        <div class="col-md-8">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-semibold">Bài đăng nổi bật của cộng đồng</h5>
+                <a href="#" class="btn btn-primary btn-sm">+ Tạo bài đăng</a>
+            </div>
+
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="card mb-3 shadow-sm border-0 rounded-4">
+                        <div class="card-body">
+                            <h6 class="fw-bold">{{ post.title }}</h6>
+                            <p class="text-muted small mb-1">
+                                Đăng bởi {{ post.author.username }} • {{ post.created_at|date:"d/m/Y H:i" }}
+                            </p>
+                            <p class="mb-0">{{ post.content|truncatechars:200 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">Chưa có bài viết nào trong cộng đồng này.</p>
+            {% endif %}
+        </div>
+
+        <!-- Right: Sidebar -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 rounded-4 mb-3">
+                <div class="card-body">
+                    <h5 class="fw-bold">{{ community.name }}</h5>
+                    <p>{{ community.description }}</p>
+
+                    <p class="text-muted small mb-1">
+                        📅 Tạo ngày: {{ community.created_at|date:"d/m/Y" }}<br>
+                        👤 Người tạo: {{ community.created_by.username }}
+                    </p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {% if is_member %}
+                            <button type="submit" class="btn btn-outline-danger w-100 mt-3">Rời cộng đồng</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-danger w-100 mt-3">Tham gia</button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.community-banner {
+    background: linear-gradient(135deg, #f9fafb, #e9ecef);
+}
+.card:hover {
+    transform: translateY(-3px);
+    transition: 0.2s;
+}
+</style>
+
+{% endblock %}
