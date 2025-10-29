@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="search-container">
+    <h2>Tìm kiếm</h2>
+
+    <form method="get" class="advanced-search-form">
+        <div class="form-group">
+            <label for="keyword">Từ khóa:</label>
+            <input type="text" id="keyword" name="keyword" value="{{ keyword }}" placeholder="Nhập từ khóa...">
+        </div>
+
+        <div class="form-group">
+            <label for="user">Người dùng:</label>
+            <input type="text" id="user" name="user" value="{{ user }}" placeholder="Tên người dùng...">
+        </div>
+
+        <div class="form-group">
+            <label for="before">Trước ngày:</label>
+            <input type="date" id="before" name="before" value="{{ before }}">
+        </div>
+
+        <div class="form-group">
+            <label for="after">Sau ngày:</label>
+            <input type="date" id="after" name="after" value="{{ after }}">
+        </div>
+
+        <div class="form-group">
+            <label for="topic">Tìm trong chủ đề:</label>
+            <select id="topic" name="topic">
+                <option value="all">Tất cả chủ đề</option>
+                {% for topic in topics %}
+                    <option value="{{ topic.id }}" {% if topic.id|stringformat:"s" == topic_id %}selected{% endif %}>
+                        {{ topic.title }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="search-button-wrapper">
+    <button type="submit" class="search-btn">
+        <i class="fas fa-search"></i>Tìm
+    </button>
+        </div>
+
+    </form>
+
+    {% if keyword %}
+<hr>
+<h3>Kết quả tìm kiếm cho "{{ keyword }}":</h3>
+
+{% if posts %}
+    <ul>
+        {% for post in posts %}
+            <li>
+                <strong>{{ post.title }}</strong><br>
+                <small>Đăng bởi {{ post.author.username }} • {{ post.created_at|date:"d/m/Y" }}</small><br>
+                <em>Chủ đề: {{ post.topic.title }}</em><br>
+                <p>{{ post.content|truncatechars:100 }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Không tìm thấy bài viết nào phù hợp.</p>
+{% endif %}
+{% endif %}
+
+
+</div>
+
+{% endblock %}

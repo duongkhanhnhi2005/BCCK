@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="main-layout">
+
+    <!-- Sidebar trái -->
+    <div class="sidebar">
+        <ul class="menu">
+            <li class="active"><i class="icon"></i> Trang chủ</li>
+            <li class="active"><i class="icon"></i> Phổ biến</li>
+        </ul>
+
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="main-content">
+        <h3>CHỦ ĐỀ</h3>
+        <ul class="topics">
+             {% for topic in topics %}
+                <li>
+                    <strong>{{ topic.title }}</strong><br>
+                </li>
+            {% empty %}
+                <li>Chưa có chủ đề nào.</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <!-- Trending -->
+    <div class="trending">
+        <h3>Trending Content</h3>
+        <div class="trend-footer">
+            <P>Về TalkNest</P>
+            <p>Thông tin pháp lý & chính sách</p>
+            <p>Hỗ trợ & liên hệ</p>
+            <p>Cộng đồng & tài nguyên</p>
+            <p>Tiện ích & khác</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

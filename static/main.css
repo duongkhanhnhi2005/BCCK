@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 * {
   box-sizing: border-box;
@@ -220,3 +221,223 @@ body {
     display: none;
   }
 }
+=======
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff7e6;
+    padding: 10px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    text-align: center;
+    height: 80px;          /* giữ nguyên chiều cao khung logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;     /* cho phép logo tràn ra ngoài */
+}
+
+.logo img {
+    height: 80px;          /* chiều cao ảnh gốc */
+    transform: scale(2); /* phóng to 1.2 → 1.5 → 2 tùy ý */
+    object-fit: contain;
+    margin-left: 25px;
+}
+
+.search-box input {
+    width: 450px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+}
+
+.auth-buttons .btn {
+    padding: 8px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.login {
+    background: #ff6600;
+    color: white;
+}
+
+.register {
+    background: #ff4500;
+    color: white;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 20% 55% 25%;
+    height: calc(100vh - 100px);
+    border-top: 2px solid #000;
+}
+
+/* Sidebar */
+.sidebar {
+    padding: 20px;
+    border-right: 2px solid #000;
+    font-size: 14px;
+}
+
+.sidebar .menu li {
+    list-style: none;
+    padding: 12px 22px;
+    margin: 10px 0;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;          /* <--- mỗi nút 1 hàng */
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #000;
+
+    width: 100px;
+    margin-left: -18px;     /* dịch cả khung ra ngoài */
+}
+
+
+.sidebar .menu li.active {
+    background: #fff;
+    border: 1px solid #000;
+    font-weight: bold;
+
+}
+
+.sidebar-footer {
+    margin-top: 250px;
+    font-size: 13px;
+}
+
+/* Main Content */
+.main-content {
+    padding: 25px;
+    margin-right: 50px;
+}
+
+.topics li {
+    list-style: none;
+    padding: 5px 0;
+    margin-right: 50px;
+}
+
+.see-more {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Trending */
+.trending {
+    padding: 25px;
+    border-left: 2px solid #000;
+    font-size: 14px;
+}
+
+.trend-footer {
+    position: absolute;
+    bottom: 40px;
+    font-size: 13px;
+}
+
+/* === SEARCH PAGE === */
+.search-container {
+    max-width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 25px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.search-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.search-tabs {
+    margin-bottom: 20px;
+}
+
+.search-tabs button {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-tabs button.active {
+    background: #ff4500;
+}
+
+.advanced-search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-group label {
+    width: 130px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff6600;
+    box-shadow: 0 0 4px #ff6600;
+}
+
+.search-button-wrapper {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.search-btn {
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-btn:hover {
+    background-color: #e03a00;
+}
+
+.search-btn i {
+    margin-right: 5px;
+}
+>>>>>>> 799ec24df183f2f18879d711b342b89122e2ec49
